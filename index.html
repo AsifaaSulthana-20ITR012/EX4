@@ -1,0 +1,213 @@
+<!doctype html >
+    <head>
+        <title>EMI CALCULATOR</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+        <style>
+            .top{
+                background-color: cadetblue;font-weight: 900;text-align: center;margin:5px;font-size: 30px;
+                width: 100%;height: 70px;padding: 20px;border:4px groove rgb(255, 123, 0);}
+           
+                 .slider,.slider1,.slider2 {
+                -webkit-appearance: none;
+                width: 100%;
+                height: 10px;
+                border-radius: 5px;
+                background: #d3d3d3;
+                outline: none;
+                opacity: 0.7;
+                -webkit-transition: .2s;
+                transition: opacity .2s;
+                }
+
+                .slider:hover {
+                opacity: 1;
+                }
+                .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 23px;
+                height: 24px;
+                background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6uGYNRP7nklCihppHMCzPZzNSKvH7mGiLM7WsmfO7FBh8-gF8fW0Xz4zIu9gecGRMJaU&usqp=CAU');
+                cursor: pointer;
+                }
+
+                .slider::-moz-range-thumb {
+                width: 23px;
+                height: 25px;
+                background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6uGYNRP7nklCihppHMCzPZzNSKvH7mGiLM7WsmfO7FBh8-gF8fW0Xz4zIu9gecGRMJaU&usqp=CAU');
+                cursor: pointer;
+                }
+                #demo,#demo1,#demo2,#demo20,#demo21,#demo22,#demo30,#demo31,#demo32{
+                    border: 2px groove rgb(189, 152, 152); padding: 3px;
+                    background-color: rgba(209, 224, 224, 0.712);
+                }
+                #c1,#c3,#c3{
+                    border-radius: 3px;border: 2px groove bisque;margin: 2px;outline: 2px;
+                }
+                
+        </style>
+        <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+        <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+      
+    </head>
+    <body style="background-image: url(https://wallpaperaccess.com/full/5651986.jpg);">
+        <div class="top">
+            EMI CALCULATOR
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                
+                <div class="col-xl-4" id="c1" style="background-color: rgb(74, 229, 128);float: left;">
+                    <h2 style="background-color: rgba(208, 150, 62, 0.701);text-align: center;">PERSONAL LOAN
+                    <img src="https://thumbs.dreamstime.com/z/investments-knowledge-invest-education-e-learning-student-loans-financing-creative-projects-web-page-presentation-vector-166861363.jpg" alt="loan_image" height="50px" width="80px">
+                    </h2>
+                    PRINCIPLE(₹): <br>
+                    <p id="demo" style="float: right;"></p> 
+                    <input type="range" id="myRange" name="amount"  min="50000" max="1500001" step="2" class="slider" onchange="ploan()">
+                    RATE(p.a): <br>
+                    <p id="demo1" style="float: right;"></p> <span id="">
+                    <input type="range"  id="myRange1" min="10.00" max="25.00" step="0.5" class="slider" onchange="ploan()">
+                    Tenure(YEARS): <br>
+                    <p id="demo2" style="float: right;"></p> <span id="">
+                    <input type="range"  id="myRange2" min="1" max="5" step="1" class="slider" onchange="ploan()">
+                    <br><br><br>
+                    <div class="row">
+                        <h4 id="totp" style="background-color: cornsilk;height: 50px;"></h4>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3" id="c2" style="background-color: darksalmon;float: left;width: 400px;">
+                    <h2 style="background-color: rgba(208, 150, 62, 0.701);text-align: center;">CAR LOAN
+                    <img src="https://www.easylinedrawing.com/wp-content/uploads/2019/07/cartoon_car_drawing_tutorial.png" alt="carimage" width="80px" height="50px">
+                    </h2>
+                    PRINCIPLE(₹): <br>
+                    <p id="demo20" style="float: right;"></p>
+                    <input type="range"  id="myRange20" min="50000" max="500000" step="2" class="slider" onchange="cloan()">
+                    RATE(p.a): <br>
+                    <p id="demo21" style="float: right;"></p>  
+                    <input type="range"  id="myRange21" min="7.00" max="17.05" step="0.5" class="slider" onchange="cloan()">
+                    Tenure(YEARS): <br>
+                    <p id="demo22" style="float: right;"></p>
+                    <input type="range" id="myRange22"   min="1" max="7" step="1" class="slider" onchange="cloan()">
+                    <br><br><br>
+                    <div class="row">
+                        <h4 id="totc" style="background-color: cornsilk;height: 50px;"></h4>
+                    </div>
+                </div>
+                
+                <div class="col-xl-4" id="c3" style="background-color: darkolivegreen;float: right;">
+                    <h2 style="background-color: rgba(208, 150, 62, 0.701);text-align: center;">HOME LOAN
+                        <img src="https://media.istockphoto.com/vectors/cute-cottage-vector-id165794938?k=20&m=165794938&s=612x612&w=0&h=MaF2jZpxrr_h7WdZih0ZngNJl_w3CH-2Q9to52hCP24=" alt="carimage" width="80px" height="50px">
+                    </h2>
+                    PRINCIPLE(₹): <br>
+                    <p id="demo30" style="float: right;"></p> 
+                    <input type="range"  min="300000" max="5000001" step="2" class="slider" id="myRange30" onchange="hloan()">
+                    RATE(p.a): <br>
+                    <p id="demo31" style="float: right;"></p>
+                    <input type="range"  min="6.09" max="11.00" step="0.5" class="slider" id="myRange31" onchange="hloan()">
+                    Tenure(YEARS): <br>
+                    <p id="demo32" style="float: right;"></p>
+                    <input type="range"   min="1" max="30" step="1" class="slider" id="myRange32" onchange="hloan()">
+                    <br><br><br>
+                    <div class="row">
+                        <h4 id="toth" style="background-color: cornsilk;height: 50px;"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+      
+            <script>
+                var slider = document.getElementById("myRange");
+                var slider1 = document.getElementById("myRange1");
+                var slider2 = document.getElementById("myRange2");
+                var slider20 = document.getElementById("myRange20");
+                var slider21 = document.getElementById("myRange21");
+                var slider22 = document.getElementById("myRange22");
+                var slider30 = document.getElementById("myRange30");
+                var slider31 = document.getElementById("myRange31");
+                var slider32 = document.getElementById("myRange32");
+                var output = document.getElementById("demo");
+                var output1 = document.getElementById("demo1");
+                var output2 = document.getElementById("demo2");
+                var output20 = document.getElementById("demo20");
+                var output21 = document.getElementById("demo21");
+                var output22 = document.getElementById("demo22");
+                var output30 = document.getElementById("demo30");
+                var output31 = document.getElementById("demo31");
+                var output32 = document.getElementById("demo32");
+                output.innerHTML = slider.value; // Display the default slider value
+                output1.innerHTML = slider1.value;
+                output2.innerHTML = slider2.value;
+                output20.innerHTML = slider20.value; // Display the default slider value
+                output21.innerHTML = slider21.value;
+                output22.innerHTML = slider22.value;
+                output.innerHTML = slider30.value; // Display the default slider value
+                output1.innerHTML = slider31.value;
+                output2.innerHTML = slider32.value;
+                // Update the current slider value (each time you drag the slider handle)
+                slider.oninput = function() {
+                output.innerHTML = this.value;
+                }
+                slider1.oninput = function() {
+                output1.innerHTML = this.value;
+                }
+                slider2.oninput = function() {
+                output2.innerHTML = this.value;
+                }
+                slider20.oninput = function() {
+                output20.innerHTML = this.value;
+                }
+                slider21.oninput = function() {
+                output21.innerHTML = this.value;
+                }
+                slider22.oninput = function() {
+                output22.innerHTML = this.value;
+                }
+                slider30.oninput = function() {
+                output30.innerHTML = this.value;
+                }
+                slider31.oninput = function() {
+                output31.innerHTML = this.value;
+                }
+                slider32.oninput = function() {
+                output32.innerHTML = this.value;
+                }
+                function ploan(){
+                var P=document.getElementById("myRange").value;
+                var Ra=document.getElementById("myRange1").value;
+                var N=document.getElementById("myRange2").value;
+                
+                R=(Ra/12/100)
+                f=Math.pow(1+R,N)
+                var numer=P * R *(1+R)^N;
+                var htotal=(P * R *f/ (f-1)).toFixed(2);
+                document.getElementById("totp").innerHTML="EMI AMOUNT (₹): "+htotal;
+                }
+                function cloan(){
+                var P=document.getElementById("myRange20").value;
+                var Ra=document.getElementById("myRange21").value;
+                var N=document.getElementById("myRange22").value;
+                
+                R=(Ra/12/100)
+                f=Math.pow(1+R,N)
+                var numer=P * R *(1+R)^N;
+                var htotal=(P * R *f/ (f-1)).toFixed(2);
+                document.getElementById("totc").innerHTML="EMI AMOUNT (₹): "+htotal;
+                }
+                function hloan(){
+                var P=document.getElementById("myRange30").value;
+                var Ra=document.getElementById("myRange31").value;
+                var N=document.getElementById("myRange32").value;
+                
+                R=(Ra/12/100)
+                f=Math.pow(1+R,N)
+                var numer=P * R *(1+R)^N;
+                var htotal=(P * R *f/ (f-1)).toFixed(2);
+                document.getElementById("toth").innerHTML="EMI AMOUNT (₹): "+htotal;
+                }
+                
+            </script>
+    </body>
+</html>
